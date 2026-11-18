@@ -143,15 +143,26 @@ header {
    -------------------------------------------------------------------------- */
 .right-header {
     display: flex;
-    width: 170px;
-    align-items: center;          /* Ikon sejajar di tengah secara vertikal */
-    justify-content: space-between; /* Jarak antar ikon merata */
+    width: 180px;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* Ukuran seragam untuk semua ikon di bagian kanan */
-.create-container img,
+   .create-container img,
 .app-container img,
-.notification-container img,
-.profile-container img {
+.notification-container img {
     width: 25px;
+}
+
+/* Foto profil: bulat dan tidak gepeng */
+.right-header .profile-container img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;   /* Bentuk lingkaran */
+    object-fit: cover;    /* Gambar dipotong rapi, bukan ditarik */
+}
+
+/* Hilangkan celah kecil di bawah gambar (img secara default inline) */
+.right-header img {
+    display: block;
 }
