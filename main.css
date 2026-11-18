@@ -1,0 +1,113 @@
+/* ==========================================================================
+   MAIN (daftar kartu video)
+   --------------------------------------------------------------------------
+   Struktur HTML yang distyling file ini:
+
+   main.content                       -> grid 4 kolom
+   └── .video-card                    (belum distyling, hanya pembungkus)
+       ├── .thumbnail-container       -> gambar thumbnail (rasio 2:1)
+       └── .information-container     -> grid 2 kolom
+           ├── .profile-container     -> foto channel (kolom 45px)
+           └── .video-text-container  -> teks (kolom sisa)
+               ├── p > a.video-title    -> judul video
+               ├── p > a.creator-name   -> nama channel
+               └── p.video-stats        -> jumlah views & waktu upload
+
+   Layout memakai CSS Grid.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   Main (container daftar video)
+   -------------------------------------------------------------------------- */
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; /* 4 kolom sama lebar; setiap .video-card mengisi satu sel */
+    width: 100%;
+    gap: 10px;                    /* Jarak antar kartu, baik horizontal maupun vertikal */
+    background-color: rgba(173, 173, 173, 0.144); /* Abu-abu transparan sebagai latar area video */
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+
+/* --------------------------------------------------------------------------
+   Thumbnail
+   -------------------------------------------------------------------------- */
+.thumbnail-container {
+    aspect-ratio: 2/1;            /* Tinggi otomatis = setengah lebar, jadi semua thumbnail seragam */
+    background-color: grey;       /* Warna placeholder selama gambar belum dimuat */
+}
+
+.thumbnail-container img {
+    object-fit: cover;            /* Gambar dipotong agar memenuhi kotak tanpa gepeng */
+    width: 100%;
+    display: block;               /* Menghilangkan celah kecil di bawah gambar (img secara default inline) */
+}
+
+
+/* --------------------------------------------------------------------------
+   Informasi video (foto channel + teks)
+   -------------------------------------------------------------------------- */
+.information-container {
+    display: grid;
+    grid-template-columns: 45px 1fr; /* Kolom 1: foto channel (tetap 45px), kolom 2: teks (sisa lebar) */
+}
+
+/* Pembungkus foto channel */
+.profile-container {
+    padding-top: 5px;             /* Menurunkan foto sedikit agar sejajar dengan judul */
+    margin-right: 10px;           /* Jarak antara foto dan teks */
+}
+
+.profile-container img {
+    width: 100%;                  /* Mengikuti lebar kolom (45px) */
+    border-radius: 40px;          /* Membuat foto berbentuk lingkaran */
+}
+
+/* Pembungkus teks (judul, nama channel, statistik) */
+.video-text-container {
+    margin-top: 5px;
+}
+
+
+/* --------------------------------------------------------------------------
+   Teks video
+   Ketiga elemen teks berbagi gaya dasar yang sama: font Roboto, tanpa
+   garis bawah, dan ditampilkan sebagai block.
+   -------------------------------------------------------------------------- */
+
+/* Judul video */
+.video-title {
+    text-decoration: none;        /* Menghilangkan garis bawah bawaan link */
+    font-family: Roboto, sans-serif;
+    color: black;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    display: block;               /* <a> secara default inline; block diperlukan agar margin atas/bawah berfungsi */
+}
+
+/* Nama channel */
+.creator-name {
+    text-decoration: none;
+    font-family: Roboto, sans-serif;
+    color: #606060;               /* Abu-abu khas YouTube */
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    display: block;               /* Agar margin-top berfungsi dan nama channel berada di baris sendiri */
+    margin-top: 8px;              /* Jarak dari judul video */
+}
+
+/* Statistik video (views · waktu upload). Elemennya <p>, bukan link,
+   sehingga text-decoration di bawah sebenarnya tidak berpengaruh. */
+.video-stats {
+    text-decoration: none;
+    font-family: Roboto, sans-serif;
+    color: #606060;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    display: block;
+}
