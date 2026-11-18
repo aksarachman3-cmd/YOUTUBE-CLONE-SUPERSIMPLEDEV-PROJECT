@@ -8,12 +8,21 @@ This is a project made by me to increase my HTML and CSS skills. I'm creating it
 
 ## Timeline
 
-| Week       | Progress         | Status |
-|:-----------|:-----------------|:------:|
-| **Week 1** | Finish Header    | ⬜     |
-| **Week 2** | Finish Main Page | ⬜     |
-| **Week 3** | Finish Side-Bar  | ⬜     |
+| Week       | Progress         | Status | Completed        |
+|:-----------|:-----------------|:------:|:-----------------|
+| **Week 1** | Finish Header    | ✅     | 17 November 2026 |
+| **Week 2** | Finish Main Page | ✅     | 18 November 2026 |
+| **Week 3** | Finish Side-Bar  | ⬜     | -                |
 
 ## File Structure
 
-*Has not been created yet; will be updated with every progress.*
+```text
+youtube-clone-project/
+├── index.html      # Page structure (header, sidebar, video cards)
+├── config.css      # Global/base styles
+├── header.css      # Header styles
+├── main.css        # Video grid and card styles
+└── src/            # Icons, logo, thumbnails, and channel pictures
+```
+
+*Will be updated with every progress.*
