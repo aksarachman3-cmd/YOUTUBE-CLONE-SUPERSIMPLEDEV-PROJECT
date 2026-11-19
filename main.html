@@ -1,40 +1,71 @@
 <!DOCTYPE html>
+<!--
+    ==========================================================================
+    YOUTUBE CLONE - index.html
+    --------------------------------------------------------------------------
+    Halaman utama tiruan YouTube. Struktur halaman:
+
+    body
+    ├── header                  -> bar atas (fixed): menu, logo, pencarian, ikon aksi
+    │   ├── .left-header
+    │   ├── .middle-header
+    │   └── .right-header
+    └── .main-section           -> area di bawah header
+        ├── aside.side-bar      -> sidebar menu navigasi
+        └── main.content        -> grid kartu video (4 kolom)
+
+    File CSS yang dipakai (urutan pemuatan penting; yang terakhir menang
+    jika ada aturan yang bentrok):
+    1. config.css   -> gaya dasar/global
+    2. header.css   -> gaya header
+    3. main.css     -> gaya grid dan kartu video
+    4. sidebar.css  -> gaya sidebar
+
+    Semua gambar berada di folder src/.
+    ==========================================================================
+-->
 <html lang="id">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Youtube Clone</title>
+        <!-- Urutan stylesheet: dasar -> header -> konten -> sidebar -->
         <link rel="stylesheet" href="config.css">
         <link rel="stylesheet" href="header.css">
         <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="sidebar.css">
     </head>
     <body>
-        <!-- Bagian Atas (HEADER) -->
+        <!-- ==================================================================
+             HEADER (bagian atas)
+             Tiga bagian sejajar horizontal: kiri, tengah, kanan.
+             ================================================================== -->
         <header>
-            <!-- Terdiri dari Menu Icon dan Youtube Logo -->
+            <!-- Kiri: ikon menu dan logo YouTube -->
             <div class="left-header">
                 <div class="menu-icon-container">
                     <img src="src/menu_icon.svg" alt="Menu">
                 </div>
                 <div class="logo-container">
+                    <!-- Logo berfungsi sebagai link ke beranda YouTube -->
                     <a href="https://www.youtube.com/" class="youtube-link">
                         <img src="src/youtube_logo.svg" alt="YouTube Home">
                     </a>
                 </div>
             </div>
 
-            <!-- Terdiri dari Search Bar, Search Icon, dan Microphone Icon -->
+            <!-- Tengah: kolom pencarian, tombol cari, dan tombol mikrofon -->
             <div class="middle-header">
                 <input type="text" placeholder="Search" class="search-bar">
                 <button type="button" class="search-button">
-                    <img src="src/search_icon.svg" alt="Search"> 
+                    <img src="src/search_icon.svg" alt="Search">
                 </button>
                 <button type="button" class="microphone-button">
                     <img src="src/microphone_icon.svg" alt="Search with Voice">
                 </button>
             </div>
 
-            <!-- Terdiri dari Create Icon, Youtube App Icon, Notification Icon, dan Profile Picture -->
+            <!-- Kanan: ikon create, aplikasi YouTube, notifikasi, dan foto profil -->
             <div class="right-header">
                 <div class="create-container">
                     <img src="src/create_icon.svg" alt="Create">
@@ -52,17 +83,61 @@
             </div>
         </header>
 
-        <!-- Bagian Utama Tampilan -->
+        <!-- ==================================================================
+             BAGIAN UTAMA
+             Berisi sidebar (kiri) dan konten video (kanan).
+             ================================================================== -->
         <div class="main-section">
-            <!-- Menggunakan aside untuk sidebar -->
+            <!-- Sidebar: <aside> dipakai karena isinya navigasi pendamping -->
             <aside class="side-bar">
-                <!-- Isi menu nanti di sini -->
+                <!--
+                    Setiap item menu memakai pola yang sama:
+                    .side-menu-icon-container berisi ikon (img) dan label (p).
+                    Untuk menambah menu, salin satu blok lalu ganti ikon dan teks.
+                -->
+                <div class="side-menu-icon-container">
+                    <img src="src/home.svg">
+                    <p>Home</p>
+                </div>
+                <div class="side-menu-icon-container">
+                    <img src="src/explore.svg">
+                    <p>Explore</p>
+                </div>
+                <div class="side-menu-icon-container">
+                    <img src="src/subscriptions.svg">
+                    <p>Subscriptions</p>
+                </div>
+                <div class="side-menu-icon-container">
+                    <img src="src/originals.svg">
+                    <p>Originals</p>
+                </div>
+                <div class="side-menu-icon-container">
+                    <img src="src/youtube-music.svg">
+                    <p>Yotuube Music</p>
+                </div>
+                <div class="side-menu-icon-container">
+                    <img src="src/library.svg">
+                    <p>Library</p>
+                </div>
             </aside>
-            
-            <!-- Menggunakan main untuk konten video -->
+
+            <!-- Konten: <main> dipakai karena ini isi utama halaman (daftar video) -->
             <main class="content">
-                <!-- Isi card video nanti di sini -->
-                 <div class="video-card">
+                <!--
+                    Struktur satu kartu video (diulang untuk setiap video):
+                    .video-card
+                    ├── .thumbnail-container      -> gambar thumbnail
+                    └── .information-container    -> grid 2 kolom
+                        ├── .profile-container    -> foto channel
+                        └── .video-text-container -> judul, nama channel, statistik
+
+                    Untuk menambah video baru, salin satu blok .video-card
+                    lalu ganti nomor gambar, link, judul, nama channel, dan statistik.
+                    CATATAN: class .profile-container juga dipakai di header
+                    (foto profil akun), jadi styling-nya harus dibatasi per area.
+                -->
+                <!-- Video 1: Marquess Brownlee -->
+                <div class="video-card">
                     <div class="thumbnail-container">
                         <img src="src/thumbnail-1.webp">
                     </div>
@@ -84,8 +159,9 @@
                             <p class="video-stats">3.4M views · 6 months ago</p>
                         </div>
                     </div>
-                 </div>
-                 <div class="video-card">
+                </div>
+                <!-- Video 2: Markiplier -->
+                <div class="video-card">
                     <div class="thumbnail-container">
                         <img src="src/thumbnail-2.webp">
                     </div>
@@ -107,8 +183,9 @@
                             <p class="video-stats">19M views · 4 years ago</p>
                         </div>
                     </div>
-                 </div>
-                 <div class="video-card">
+                </div>
+                <!-- Video 3: SSSniperWolf -->
+                <div class="video-card">
                     <div class="thumbnail-container">
                         <img src="src/thumbnail-3.webp">
                     </div>
@@ -130,8 +207,9 @@
                             <p class="video-stats">12M views · 1 year ago</p>
                         </div>
                     </div>
-                 </div>
-                 <div class="video-card">
+                </div>
+                <!-- Video 4: Veritasium -->
+                <div class="video-card">
                     <div class="thumbnail-container">
                         <img src="src/thumbnail-4.webp">
                     </div>
@@ -141,7 +219,7 @@
                         </div>
                         <div class="video-text-container">
                             <p>
-                                <a href="https://www.youtube.com/watch?v=094y1Z2wpJg" class="video-title">                              
+                                <a href="https://www.youtube.com/watch?v=094y1Z2wpJg" class="video-title">
                                     The Simplest Math Problem No One Can Solve - Collatz Conjecture
                                 </a>
                             </p>
@@ -153,8 +231,9 @@
                             <p class="video-stats">18M views · 4 months ago</p>
                         </div>
                     </div>
-                 </div>
-                 <div class="video-card">
+                </div>
+                <!-- Video 5: CS Dojo -->
+                <div class="video-card">
                     <div class="thumbnail-container">
                         <img src="src/thumbnail-5.webp">
                     </div>
@@ -176,8 +255,9 @@
                             <p class="video-stats">519K views · 5 years ago</p>
                         </div>
                     </div>
-                 </div>
-                 <div class="video-card">
+                </div>
+                <!-- Video 6: MrBeast -->
+                <div class="video-card">
                     <div class="thumbnail-container">
                         <img src="src/thumbnail-6.webp">
                     </div>
@@ -199,8 +279,9 @@
                             <p class="video-stats">141M views · 1 year ago</p>
                         </div>
                     </div>
-                 </div>
-                 <div class="video-card">
+                </div>
+                <!-- Video 7: RealLifeLore -->
+                <div class="video-card">
                     <div class="thumbnail-container">
                         <img src="src/thumbnail-7.webp">
                     </div>
@@ -210,7 +291,7 @@
                         </div>
                         <div class="video-text-container">
                             <p>
-                                <a href="https://www.youtube.com/watch?v=fNVa1qMbF9Y" class="video-title">  
+                                <a href="https://www.youtube.com/watch?v=fNVa1qMbF9Y" class="video-title">
                                     Why Planes Don't Fly Over Tibet
                                 </a>
                             </p>
@@ -222,8 +303,9 @@
                             <p class="video-stats">6.6M views · 1 year ago</p>
                         </div>
                     </div>
-                 </div>
-                 <div class="video-card">
+                </div>
+                <!-- Video 8: VISION -->
+                <div class="video-card">
                     <div class="thumbnail-container">
                         <img src="src/thumbnail-8.webp">
                     </div>
@@ -233,7 +315,7 @@
                         </div>
                         <div class="video-text-container">
                             <p>
-                                <a href="https://www.youtube.com/watch?v=lFm4EM1juls" class="video-title">                                    
+                                <a href="https://www.youtube.com/watch?v=lFm4EM1juls" class="video-title">
                                     Inside The World's Biggest Passenger Plane
                                 </a>
                             </p>
@@ -245,8 +327,9 @@
                             <p class="video-stats">3.7M views · 10 months ago</p>
                         </div>
                     </div>
-                 </div>
-                 <div class="video-card">
+                </div>
+                <!-- Video 9: THENX -->
+                <div class="video-card">
                     <div class="thumbnail-container">
                         <img src="src/thumbnail-9.webp">
                     </div>
@@ -256,7 +339,7 @@
                         </div>
                         <div class="video-text-container">
                             <p>
-                                <a href="https://www.youtube.com/watch?v=ixmxOlcrlUc" class="video-title">         
+                                <a href="https://www.youtube.com/watch?v=ixmxOlcrlUc" class="video-title">
                                     The SECRET to Super Human STRENGTH
                                 </a>
                             </p>
@@ -268,8 +351,9 @@
                             <p class="video-stats">24M views · 8 years ago</p>
                         </div>
                     </div>
-                 </div>
-                 <div class="video-card">
+                </div>
+                <!-- Video 10: Business Insider -->
+                <div class="video-card">
                     <div class="thumbnail-container">
                         <img src="src/thumbnail-10.webp">
                     </div>
@@ -291,8 +375,9 @@
                             <p class="video-stats">14M views · 1 year ago</p>
                         </div>
                     </div>
-                 </div>
-                 <div class="video-card">
+                </div>
+                <!-- Video 11: Destination Tips -->
+                <div class="video-card">
                     <div class="thumbnail-container">
                         <img src="src/thumbnail-11.webp">
                     </div>
@@ -302,7 +387,7 @@
                         </div>
                         <div class="video-text-container">
                             <p>
-                                <a href="https://www.youtube.com/watch?v=0nZuYyXET3s" class="video-title">  
+                                <a href="https://www.youtube.com/watch?v=0nZuYyXET3s" class="video-title">
                                     Dubai's Crazy Underwater Train and Other Things #Only in Dubai
                                 </a>
                             </p>
@@ -314,8 +399,9 @@
                             <p class="video-stats">3M views · 1 year ago</p>
                         </div>
                     </div>
-                 </div>
-                 <div class="video-card">
+                </div>
+                <!-- Video 12: TED-Ed -->
+                <div class="video-card">
                     <div class="thumbnail-container">
                         <img src="src/thumbnail-12.webp">
                     </div>
@@ -325,7 +411,7 @@
                         </div>
                         <div class="video-text-container">
                             <p>
-                                <a href="https://www.youtube.com/watch?v=9iMGFqMmUFs" class="video-title">                                    
+                                <a href="https://www.youtube.com/watch?v=9iMGFqMmUFs" class="video-title">
                                     What would happen if you didn’t drink water? - Mia Nacamulli
                                 </a>
                             </p>
@@ -337,7 +423,7 @@
                             <p class="video-stats">3.7M views · 10 months ago</p>
                         </div>
                     </div>
-                 </div>
+                </div>
             </main>
         </div>
     </body>
