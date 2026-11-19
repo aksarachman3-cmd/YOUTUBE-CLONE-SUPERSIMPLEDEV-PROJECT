@@ -14,6 +14,10 @@
                └── p.video-stats        -> jumlah views & waktu upload
 
    Layout memakai CSS Grid.
+
+   CATATAN: header (55px) dan sidebar (75px) memakai `position: fixed`, jadi
+   tidak memakan ruang di layout. Padding atas dan kiri pada `main` memberi
+   ruang agar kartu video tidak tertutup keduanya.
    ========================================================================== */
 
 
@@ -26,8 +30,9 @@ main {
     width: 100%;
     gap: 10px;                    /* Jarak antar kartu, baik horizontal maupun vertikal */
     background-color: rgba(173, 173, 173, 0.144); /* Abu-abu transparan sebagai latar area video */
-    padding-top: 20px;
+    padding-top: 80px;            /* 55px (tinggi header) + 25px jarak, agar kartu tidak tertutup header */
     padding-right: 20px;
+    padding-left: 95px;           /* 75px (lebar sidebar) + 20px jarak, agar kartu tidak tertutup sidebar */
 }
 
 
