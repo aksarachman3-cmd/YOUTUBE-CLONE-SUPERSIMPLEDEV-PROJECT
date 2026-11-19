@@ -1,17 +1,55 @@
+/* ==========================================================================
+   CONFIG (gaya dasar / global)
+   --------------------------------------------------------------------------
+   File ini dimuat paling awal di index.html, jadi berisi:
+   1. Font Roboto dari Google Fonts
+   2. Reset dasar (box-sizing, margin bawaan browser)
+   3. Nilai default untuk elemen umum (img, p)
+   4. Layout dasar .main-section
+
+   Aturan di sini bersifat umum. File CSS lain (header.css, main.css,
+   sidebar.css) dimuat sesudahnya dan menimpa nilai default ini bila perlu.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   Font
+   -------------------------------------------------------------------------- */
+/* Memuat font Roboto (berat 100-900, normal dan italic) dari Google Fonts.
+   Font dipakai lewat `font-family: Roboto` di file CSS lain.
+   `display=swap` menampilkan teks dengan font cadangan dulu sampai Roboto
+   selesai dimuat. @import harus berada di baris paling atas file CSS. */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+
+/* --------------------------------------------------------------------------
+   Reset global
+   -------------------------------------------------------------------------- */
 * {
-    box-sizing: border-box;
-    font-size: 12px;
+    box-sizing: border-box;       /* width/height sudah termasuk padding dan border, jadi ukuran lebih mudah dihitung */
+    font-size: 12px;              /* Ukuran font dasar untuk semua elemen. Elemen lain menimpanya dengan ukuran sendiri */
 }
 
 body {
-    margin: 0px;
+    margin: 0px;                  /* Menghapus margin bawaan browser (sekitar 8px) agar header menempel ke tepi layar */
 }
+
+
+/* --------------------------------------------------------------------------
+   Nilai default elemen
+   -------------------------------------------------------------------------- */
 img {
-    width: 20px;
+    width: 20px;                  /* Ukuran default semua gambar. Tiap komponen menimpanya (mis. thumbnail 100%, ikon header 25px) */
 }
 
 p {
-    margin: 0px;
+    margin: 0px;                  /* Menghapus margin atas-bawah bawaan <p> agar tidak ada celah antar paragraf */
+}
+
+
+/* --------------------------------------------------------------------------
+   Layout dasar
+   -------------------------------------------------------------------------- */
+.main-section {
+    display: flex;                /* Pembungkus sidebar dan konten. Sidebar bersifat fixed, jadi praktis hanya <main> yang ikut alur flex */
 }
