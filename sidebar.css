@@ -1,0 +1,54 @@
+/* ==========================================================================
+   SIDEBAR (menu navigasi samping)
+   --------------------------------------------------------------------------
+   Struktur HTML yang distyling file ini:
+
+   aside.side-bar                       (fixed, lebar 75px)
+   └── .side-menu-icon-container        (satu item menu, tinggi 80px)
+       ├── img                          -> ikon menu
+       └── p                            -> label menu
+
+   Contoh item: Home, Explore, Subscriptions, Originals, YouTube Music, Library.
+
+   CATATAN: karena sidebar memakai `position: fixed`, sidebar tidak lagi
+   memakan ruang di layout. Konten di sebelahnya (main) perlu
+   `margin-left: 75px` agar tidak tertutup sidebar.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   Sidebar (container utama)
+   -------------------------------------------------------------------------- */
+aside {
+    position: fixed;              /* Sidebar tetap terlihat saat halaman di-scroll */
+    background-color: white;      /* Agar konten yang lewat di belakang sidebar tidak terlihat tembus */
+    height: 100%;                 /* Setinggi layar (karena fixed, persentase mengikuti viewport) */
+    margin-top: 55px;             /* Turun sebesar tinggi header (55px) supaya tidak tertutup header */
+    width: 75px;                  /* Lebar tetap, mode ringkas: ikon di atas, label di bawah */
+}
+
+
+/* --------------------------------------------------------------------------
+   Item menu
+   -------------------------------------------------------------------------- */
+
+/* Satu item menu: ikon dan label disusun vertikal dan dipusatkan */
+.side-menu-icon-container {
+    height: 80px;                 /* Tinggi tetap tiap item, jadi jarak antar menu seragam */
+    display: flex;
+    flex-direction: column;       /* Susun ikon di atas, label di bawah */
+    justify-content: center;      /* Pusatkan secara vertikal */
+    align-items: center;          /* Pusatkan secara horizontal */
+    gap: 5px;                     /* Jarak antara ikon dan label */
+}
+
+.side-menu-icon-container img {
+    width: 30%;                   /* Ukuran ikon relatif terhadap lebar item (75px -> sekitar 22px) */
+}
+
+/* Label menu */
+.side-menu-icon-container p {
+    font-family: Roboto;
+    font-size: 10px;              /* Kecil agar teks panjang seperti "Subscriptions" muat di 75px */
+    text-align: center;
+}
