@@ -3,7 +3,7 @@
    --------------------------------------------------------------------------
    Struktur layout:
 
-   header
+   header                 (fixed, menempel di atas layar saat scroll)
    ├── .left-header      (200px)  -> ikon menu + logo
    │   ├── .menu-icon-container
    │   └── .logo-container > .youtube-link
@@ -11,10 +11,14 @@
    │   ├── .search-bar
    │   ├── .search-button
    │   └── .microphone-button
-   └── .right-header     (170px)  -> ikon create, apps, notifikasi, profil
+   └── .right-header     (180px)  -> ikon create, apps, notifikasi, profil
 
    Layout memakai Flexbox. `justify-content: space-between` pada <header>
    membagi tiga bagian di atas: kiri, tengah, dan kanan.
+
+   CATATAN: karena header memakai `position: fixed`, header tidak lagi
+   memakan ruang di layout. Elemen di bawahnya (misalnya .main-section)
+   perlu `padding-top: 55px` agar kontennya tidak tertutup header.
    ========================================================================== */
 
 
@@ -27,8 +31,10 @@ header {
     display: flex;                /* Menyusun left/middle/right secara horizontal */
     justify-content: space-between; /* Jarak antar bagian merata, kiri & kanan menempel ke tepi */
     padding-left: 10px;
-    padding-right: 25px;
+    padding-right: 10px;          /* Sama dengan padding-left supaya simetris */
     box-shadow: 0px 1px 2px rgba(63, 63, 63, 0.182); /* Bayangan tipis sebagai garis pemisah dengan konten */
+    position: fixed;              /* Header tetap terlihat saat halaman di-scroll */
+    background-color: white;      /* Agar konten yang lewat di belakang header tidak terlihat tembus */
 }
 
 
@@ -144,25 +150,29 @@ header {
 .right-header {
     display: flex;
     width: 180px;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-between; /* Jarak antar ikon merata */
+    align-items: center;          /* Ikon sejajar di tengah secara vertikal */
 }
 
-   .create-container img,
+/* Ukuran seragam untuk ikon aksi (bukan foto profil) */
+.create-container img,
 .app-container img,
 .notification-container img {
     width: 25px;
 }
 
-/* Foto profil: bulat dan tidak gepeng */
+/* Foto profil: bulat dan tidak gepeng.
+   Diawali .right-header agar tidak ikut mengubah foto channel
+   di kartu video yang memakai class .profile-container juga. */
 .right-header .profile-container img {
     width: 32px;
     height: 32px;
-    border-radius: 50%;   /* Bentuk lingkaran */
-    object-fit: cover;    /* Gambar dipotong rapi, bukan ditarik */
+    border-radius: 50%;           /* Bentuk lingkaran */
+    object-fit: cover;            /* Gambar dipotong rapi, bukan ditarik */
 }
 
-/* Hilangkan celah kecil di bawah gambar (img secara default inline) */
+/* Hilangkan celah kecil di bawah gambar (img secara default inline),
+   supaya semua ikon sejajar tepat di tengah secara vertikal */
 .right-header img {
     display: block;
 }
